@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Resume</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">    
+        <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Srisakdi" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+        <link rel="stylesheet" href='{{rooturl}}/css/index.css'>
+    </head>
+    <body>
+        {{#if auth}}
+            <button class="logout" id="logout"><i class="fas fa-power-off fa-1x"></i>Log out</button>
+        {{/if}}
+        <div class="head-banner">
+            <ul class="row list-unstyled">
+                <li class="col-12 px-5 d-flex justify-content-center align-items-center">
+                    <ul class="row list-unstyled sticker">
+                        <li class="col-12 text-center p-4">
+                            <p class=""><b>HELLO</b></p>
+                            <p><i>my name is</i></p>
+                        </li>
+
+                        <li class="col-12 p-4">
+                            <ul class="row list-unstyled">
+                                <li class="col-12">
+                                    <h1>ALexey</h1>
+                                </li>
+
+                                <li class="col-12">
+                                    <p>Welcome to my portfolio page!</p>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="col-12"></li>
+                    </ul>
+                </li>
+
+                <li class="col-12">
+                    <a href="#cv" id="more">
+                        <ul class="row list-unstyled">
+                            <li class="col-12">
+                                <p>Look More</p>
+                            </li>
+
+                            <li class="col-12">
+                                <i class="fas fa-caret-down"></i>
+                            </li>
+                        </ul>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="cv-data pt-3" id="cv">
+            <ul class="row list-unstyled cv-me">
+                <li class="col-12 col-sm-3 col-md-4 avatar p-0">
+                    <img src="{{rooturl}}/img/me.jpg" alt="" srcset="">
+                </li>
+
+                <li class="col-2 col-md name p-lg-5">
+                    <ul class="row list-unstyled">
+                        <li class="col-12">
+                            <p class="tex-left m-0"><b>Alexey</b></p>
+                        </li>
+
+                        <li class="col-12">
+                            <p class="m-0"><i>SOFTWARE DEVELOPER</i></p>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="col-12 col-md-3 col-lg-3 col-xl-2 socials">
+                    <ul class="row list-unstyled px-3">
+                        <li class="col p-0">
+                            <a href=""><i class="fab fa-github fa-2x"></i></a>
+                        </li>
+
+                        <li class="col p-0">
+                            <a href="https://vk.com/id164759132"><i class="fab fa-vk fa-2x"></i></a>
+                        </li>
+
+                        <li class="col p-0">
+                            <a href=""><i class="fab fa-facebook-f fa-2x"></i></a>
+                        </li>
+
+                        <li class="col p-0">
+                            <a href="https://www.instagram.com/5ph5tc_m1nd/"><i class="fab fa-instagram fa-2x"></i></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="row list-unstyled skills my-1">
+                <li class="col-12 partition-header my-3">
+                    <p>Programming Skills</p>
+                </li>
+
+                <li class="col-12 my-3 circles">
+                    <ul class="row list-unstyled d-flex justify-content-center align-items-center">
+                        {{#each diagrams}}
+                            <li class="col-sm-6 col-md-3 skill-circle my-2">
+                                <div class="circle">
+                                    <p>{{skill}}</p>
+                                    <div>{{name}}</div>
+                                </div>
+                                {{#if ../auth}}
+                                    <button class="editbtn" id="diagram_edit"><i class="far fa-edit fa-lg"></i></button>
+                                {{/if}}
+                            </li>
+                        {{/each}}
+
+                        <li class="col">
+                            {{#if auth}}
+                                <button id="info_add" class="addbtn" id="diagram_add"><i class="fas fa-plus fa-lg"></i></button>
+                            {{/if}}
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="row list-unstyled skills-n-langs my-1">
+                <li class="col-12 col-md-6 mt-5">
+                    <ul class="row list-unstyled">
+                        <li class="col-12 partition-header">
+                            <p>Additional Skills</p>
+                        </li>
+                
+                        <li class="col-12 mt-4 mb-3">
+                            <ul class="list list-unstyled pl-5">
+                                {{#each add_skills}}
+                                    <li>
+                                        <p>{{this}}</p>
+                                        {{#if ../auth}}
+                                            <button class="editbtn" id="info_edit" name="additional"><i class="far fa-edit fa-lg"></i></button>
+                                        {{/if}}
+                                    </li>
+                                {{/each}}
+
+                                {{#if auth}}
+                                    <li>
+                                        <button id="info_add" class="addbtn" name="expierence"><i class="fas fa-plus fa-lg"></i></button>
+                                    </li>                                        
+                                {{/if}}
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="col-12 col-md-6 mt-5">
+                    <ul class="row list-unstyled">
+                        <li class="col-12 partition-header">
+                            <p>Languages</p>
+                        </li>
+                 
+                        <li class="col-12 mt-4 mb-3">
+                            <ul class="list list-unstyled pl-5">
+                                {{#each langs}}
+                                    <li>
+                                        <p>{{this}}</p>
+                                        {{#if ../auth}}
+                                            <button class="editbtn" id="info_edit" name="language"><i class="far fa-edit fa-lg"></i></button>
+                                        {{/if}}
+                                    </li>
+                                {{/each}}
+
+                                {{#if auth}}
+                                    <li>
+                                        <button id="info_add" class="addbtn" name="expierence"><i class="fas fa-plus fa-lg"></i></button>
+                                    </li>                                        
+                                {{/if}}
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="row list-unstyled education-n-exp my-1">
+                <li class="col-12 col-md-6 mt-4">
+                    <ul class="row list-unstyled">
+                        <li class="col-12 partition-header">
+                            <p>Education</p>
+                        </li>
+                 
+                        <li class="col-12 mt-4 mb-3">
+                            <ul class="list list-unstyled pl-5">
+                                {{#each education}}
+                                    <li>
+                                        <p>{{this}}</p>
+                                        {{#if ../auth}}
+                                            <button id="info_edit" class="editbtn" name="education"><i class="far fa-edit fa-lg"></i></button>
+                                        {{/if}}
+                                    </li>
+                                {{/each}}
+
+                                {{#if auth}}
+                                    <li>
+                                        <button id="info_add" class="addbtn" name="expierence"><i class="fas fa-plus fa-lg"></i></button>
+                                    </li>                                        
+                                {{/if}}
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                 
+                <li class=" col-md-6 col-12 mt-4">
+                    <ul class="row list-unstyled">
+                        <li class="col-12 partition-header">
+                            <p>Expierence</p>
+                        </li>
+                 
+                        <li class="col-12 mt-4 mb-3">
+                            <ul class="list list-unstyled pl-5">
+                                {{#each exp}}
+                                    <li>
+                                        <p>{{this}}</p>
+                                        {{#if ../auth}}
+                                            <button id="info_edit" class="editbtn" name="expierence"><i class="far fa-edit fa-lg"></i></button>
+                                        {{/if}}
+                                    </li>
+                                {{/each}}
+
+                                {{#if auth}}
+                                    <li>
+                                        <button id="info_add" class="addbtn" name="expierence"><i class="fas fa-plus fa-lg"></i></button>
+                                    </li>                                        
+                                {{/if}}
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="row list-unstyled my-1">
+                <li class="col-12 partition-header text-center">
+                    <p>About Me</p>
+                </li>
+
+                <li>
+
+                </li>
+            </ul>
+
+            <ul class="row list-unstyled mt-1  mb-5">
+                <li class="col-12 partition-header text-center">
+                    <p>Contact Me</p>
+                </li>
+
+                <li class="col-4"></li>
+
+                <li class="contact-window col-4 mt-5">
+                    <ul class="row list-unstyled">
+                        <li class="col-12 d-flex align-items-center my-2 text-left">
+                            <label for="name">Name</label>
+                            <input type="text" id="name">
+                        </li>
+
+                        <li class="col-12 d-flex align-items-center my-2 text-left">
+                            <label for="email">Email</label>
+                            <input type="email" id="email">
+                        </li>
+
+                        <li class="col-12 d-flex align-items-start my-2 text-left">
+                            <label for="message">Message</label>
+                            <textarea id="message" cols="30" rows="10"></textarea>
+                        </li>
+
+                        <li class="col-12 d-flex justify-content-center align-items-start my-2 text-left">
+                            <button id="send">Send</button>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="col-4"></li>
+            </ul>
+        </div>
+
+        <div class="modal" id="modal">
+            <div>
+                
+            </div>
+            <button id="save">Save</button>
+            <button id="cancel">Cancel</button>
+        </div>
+
+        <footer class="mt-5 py-3">
+            <script>
+                function setCopyright()
+                {
+                    var year = new Date();
+                    year = year.getFullYear();
+                    document.querySelector('footer').innerHTML = `<p class="text-center my-1">&#169; ${year}</p>` 
+                }
+                setCopyright();
+            </script>
+        </footer>
+
+        <script src="{{rooturl}}/js/jquery-3.3.1.min.js"></script>
+        <script src="{{rooturl}}/js/index.js"></script>
+        <script src="{{rooturl}}/js/diagram.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+        <script src="{{rooturl}}/js/email.js"></script>
+        {{#if auth}}
+            <script src="{{rooturl}}/js/modal.js"></script>
+            <script src="{{rooturl}}/js/modal_handler.js"></script>
+            <script src="{{rooturl}}/js/logout.js"></script>
+        {{/if}}
+
+        <script>
+            var modal = new modal(); modal.init();
+            var modal_handler = new modalHandler(modal); modal_handler.init();
+        </script>
+    </body>
+</html>
