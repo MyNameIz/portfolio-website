@@ -1,0 +1,21 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "cookie": "^0.3.1",
+    "cookies": "^0.7.2",
+    "fs": "0.0.1-security",
+    "handlebars": "^4.0.12",
+    "http": "0.0.0",
+    "nodemailer": "^4.6.8",
+    "pg": "^7.5.0",
+  }
+}
